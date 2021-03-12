@@ -92,8 +92,6 @@ class DomesticMelonOrder(AbstractMelonOrder):
         super().__init__(species, qty, "domestic", 0.08)
         
 
-        
-
 class InternationalMelonOrder(AbstractMelonOrder):
     """An international (non-US) melon order."""
     def __init__(self, species, qty, country_code):
@@ -106,6 +104,18 @@ class InternationalMelonOrder(AbstractMelonOrder):
 
         return self.country_code
 
+
+class GovernmentMelonOrder(AbstractMelonOrder):
+    """A government melon order with no tax and inspection."""
+    def __init__(self, species, qty):
+        super().__init__(species, qty, "government", 0)
+
+        self.passed_inspection = False
+
+    def mark_inspection(self):
+        self.passed_inspection = True
+
+
 # self.tax = tax
 # self.order_typer = order_type
 
@@ -113,7 +123,7 @@ class InternationalMelonOrder(AbstractMelonOrder):
 # super().__init__(species, qty, "international", 0.17)
 # self.country_code = country_code
     
-    test3 = InternationalMelonOrder()
+
 
         # if self.order_type = "international":
         #     self.order_type = ""
