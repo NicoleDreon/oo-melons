@@ -58,6 +58,7 @@
 
 #         return self.country_code
 
+# refactored code above using multiple inheritance and abstract class
 # thought process:
 
 class AbstractMelonOrder:
@@ -67,6 +68,7 @@ class AbstractMelonOrder:
         self.shipped = False
         self.order_type = order_type
         self.tax = tax
+
 
     def get_total(self):
         """Calculate price, including tax."""
@@ -81,10 +83,12 @@ class AbstractMelonOrder:
       
         return total
 
+
     def mark_shipped(self):
         """Record the fact than an order has been shipped."""
 
         self.shipped = True
+
 
 class DomesticMelonOrder(AbstractMelonOrder):
     """A melon order within the USA."""
@@ -112,27 +116,6 @@ class GovernmentMelonOrder(AbstractMelonOrder):
 
         self.passed_inspection = False
 
+
     def mark_inspection(self):
         self.passed_inspection = True
-
-
-# self.tax = tax
-# self.order_typer = order_type
-
-# def __init__(self, species, qty, country_Code):
-# super().__init__(species, qty, "international", 0.17)
-# self.country_code = country_code
-    
-
-
-        # if self.order_type = "international":
-        #     self.order_type = ""
-        # self.tax = 0
-
-# we'll be pulling the attributes from the super class, InternationalMelon
-# using the super(). ...
-# can we do an else statement like 
-# if self.order_type = "international":
-#     self.tax = 0.17
-# else:
-#     self.tax = 0.08 
